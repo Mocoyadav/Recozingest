@@ -53,8 +53,8 @@ const runAllTests = async () => {
     const PipelineExecutionService = require('./src/services/pipelineExecution.service');
     const testCases = [
       {
-        input: 'Connection failed: mongodb://admin:secretPass123@cluster0.mongodb.net:27017/ricozingest',
-        forbidden: ['secretPass123', 'admin:', 'cluster0.mongodb.net']
+        input: 'Connection failed: mongodb://testuser:test-password@localhost:27017/ricozingest',
+        forbidden: ['test-password', 'testuser:', 'localhost']
       },
       {
         input: 'Extraction failed: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.fakeToken',
