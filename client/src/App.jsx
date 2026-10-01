@@ -16,6 +16,7 @@ import PipelineDetailPage from './pages/pipelines/PipelineDetailPage.jsx';
 import RunHistoryPage from './pages/history/RunHistoryPage.jsx';
 import NotFoundPage from './pages/NotFoundPage.jsx';
 
+import LandingPage from './pages/landing/LandingPage.jsx';
 import ErrorBoundary from './components/common/ErrorBoundary.jsx';
 
 export default function App() {
@@ -25,35 +26,37 @@ export default function App() {
         <AuthProvider>
           <ErrorBoundary>
             <Routes>
-            {/* Public-only routes: redirect already-authenticated users to /dashboard */}
-            <Route element={<PublicOnlyRoute />}>
-              <Route element={<AuthLayout />}>
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/register" element={<RegisterPage />} />
-              </Route>
-            </Route>
+              {/* Public Landing Page */}
+              <Route path="/" element={<LandingPage />} />
 
-            {/* Protected routes: require authenticated session and render inside AppLayout */}
-            <Route element={<ProtectedRoute />}>
-              <Route element={<AppLayout />}>
-                <Route path="/dashboard" element={<DashboardPage />} />
-                <Route path="/pipelines" element={<PipelinesListPage />} />
-                <Route path="/pipelines/new" element={<PipelineCreatePage />} />
-                <Route path="/pipelines/:id" element={<PipelineDetailPage />} />
-                <Route path="/sources" element={<SourcesListPage />} />
-                <Route path="/destinations" element={<DestinationsListPage />} />
-                <Route path="/history" element={<RunHistoryPage />} />
-                <Route path="/" element={<Navigate to="/dashboard" replace />} />
-                <Route path="*" element={<NotFoundPage />} />
+              {/* Public-only routes: redirect already-authenticated users to /dashboard */}
+              <Route element={<PublicOnlyRoute />}>
+                <Route element={<AuthLayout />}>
+                  <Route path="/login" element={<LoginPage />} />
+                  <Route path="/register" element={<RegisterPage />} />
+                </Route>
               </Route>
-            </Route>
 
-            {/* Fallback route */}
-            <Route path="*" element={<Navigate to="/login" replace />} />
-          </Routes>
-        </ErrorBoundary>
-      </AuthProvider>
-    </ToastProvider>
-  </BrowserRouter>
+              {/* Protected routes: require authenticated session and render inside AppLayout */}
+              <Route element={<ProtectedRoute />}>
+                <Route element={<AppLayout />}>
+                  <Route path="/dashboard" element={<DashboardPage />} />
+                  <Route path="/pipelines" element={<PipelinesListPage />} />
+                  <Route path="/pipelines/new" element={<PipelineCreatePage />} />
+                  <Route path="/pipelines/:id" element={<PipelineDetailPage />} />
+                  <Route path="/sources" element={<SourcesListPage />} />
+                  <Route path="/destinations" element={<DestinationsListPage />} />
+                  <Route path="/history" element={<RunHistoryPage />} />
+                  <Route path="*" element={<NotFoundPage />} />
+                </Route>
+              </Route>
+
+              {/* Fallback route */}
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </ErrorBoundary>
+        </AuthProvider>
+      </ToastProvider>
+    </BrowserRouter>
   );
 }
