@@ -589,10 +589,34 @@
 
 
 /* ==========================================================================
-   AUTHENTICATION LAYOUT & FORMS (PHASE 4)
+   AUTHENTICATION LAYOUT & FORMS (REFINED B2B SAAS THEME)
    ========================================================================== */
 
 .auth-wrapper {
+  --bg-app: #F7F7F5;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #FFFFFF;
+  --primary: #1F6B4F;
+  --primary-hover: #18563F;
+  --primary-active: #134432;
+  --primary-light: #E8F1EC;
+  --primary-glow: transparent;
+  --accent: #1F6B4F;
+  --accent-hover: #18563F;
+  --text-primary: #202522;
+  --text-secondary: #66706A;
+  --text-muted: #8A918D;
+  --border-subtle: #E1E5E2;
+  --border-default: #E1E5E2;
+  --border-strong: #C8CEC9;
+  --border-focus: #1F6B4F;
+  --danger: #C44536;
+  --danger-bg: #FDF2F2;
+  --danger-border: #F8D7DA;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+
   min-height: 100vh;
   width: 100%;
   display: flex;
@@ -600,10 +624,8 @@
   align-items: center;
   justify-content: center;
   padding: 2.5rem 1.25rem;
-  background-color: var(--bg-app);
-  background-image: 
-    radial-gradient(circle at 50% 5%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 90% 90%, rgba(6, 182, 212, 0.1) 0%, transparent 45%);
+  background-color: #F7F7F5;
+  background-image: none;
   position: relative;
   overflow-y: auto;
 }
@@ -624,69 +646,71 @@
 }
 
 .auth-logo-badge {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, var(--primary), var(--accent));
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #1F6B4F;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  box-shadow: 0 0 25px -4px var(--primary-glow);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
   margin-bottom: 0.875rem;
 }
 
 .auth-brand-name {
   font-family: var(--font-heading);
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.025em;
+  color: #202522;
+  letter-spacing: -0.02em;
   line-height: 1.2;
 }
 
 .auth-brand-name span {
-  color: var(--accent);
+  color: #1F6B4F;
 }
 
 .auth-brand-tagline {
   font-size: 0.875rem;
-  color: var(--text-secondary);
+  color: #66706A;
   margin-top: 0.25rem;
+  max-width: 320px;
 }
 
 .auth-card {
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg);
+  background-color: #FFFFFF;
+  border: 1px solid #E1E5E2;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.04);
   padding: 2.25rem;
-  backdrop-filter: blur(12px);
+  backdrop-filter: none;
 }
 
 .auth-card-header {
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.5rem;
   text-align: left;
 }
 
 .auth-card-title {
   font-family: var(--font-heading);
-  font-size: 1.375rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 0.375rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #202522;
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.01em;
 }
 
 .auth-card-subtitle {
   font-size: 0.875rem;
-  color: var(--text-secondary);
-  line-height: 1.4;
+  color: #66706A;
+  line-height: 1.45;
 }
 
 .auth-form {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.125rem;
 }
 
 .auth-field {
@@ -697,10 +721,10 @@
 
 .auth-field label {
   font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  font-weight: 500;
+  color: #202522;
+  text-transform: none;
+  letter-spacing: normal;
 }
 
 .auth-input-wrapper {
@@ -712,7 +736,7 @@
 .auth-input-icon {
   position: absolute;
   left: 0.875rem;
-  color: var(--text-muted);
+  color: #8A918D;
   pointer-events: none;
   display: flex;
   align-items: center;
@@ -720,15 +744,19 @@
 
 .auth-input {
   width: 100%;
-  height: 42px;
-  background-color: var(--bg-surface-elevated);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-md);
+  height: 40px;
+  background-color: #FFFFFF;
+  border: 1px solid #E1E5E2;
+  border-radius: 6px;
   padding: 0 2.5rem 0 2.5rem;
-  color: var(--text-primary);
+  color: #202522;
   font-family: var(--font-sans);
   font-size: 0.875rem;
-  transition: all var(--transition-fast);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.auth-input::placeholder {
+  color: #8A918D;
 }
 
 .auth-input.no-icon {
@@ -737,21 +765,21 @@
 
 .auth-input:focus {
   outline: none;
-  border-color: var(--border-focus);
-  box-shadow: 0 0 0 3px var(--primary-light);
+  border-color: #1F6B4F;
+  box-shadow: 0 0 0 3px #E8F1EC;
 }
 
 .auth-input.has-error {
-  border-color: var(--danger);
+  border-color: #C44536;
 }
 
 .auth-input.has-error:focus {
-  box-shadow: 0 0 0 3px var(--danger-bg);
+  box-shadow: 0 0 0 3px #FDF2F2;
 }
 
 .auth-input-error {
   font-size: 0.75rem;
-  color: var(--danger);
+  color: #C44536;
   margin-top: 0.25rem;
 }
 
@@ -760,7 +788,7 @@
   right: 0.75rem;
   background: transparent;
   border: none;
-  color: var(--text-muted);
+  color: #8A918D;
   cursor: pointer;
   padding: 4px;
   display: flex;
@@ -771,15 +799,15 @@
 }
 
 .auth-password-toggle:hover {
-  color: var(--text-primary);
+  color: #202522;
 }
 
 .auth-alert-error {
-  background: var(--danger-bg);
-  border: 1px solid var(--danger-border);
-  border-radius: var(--radius-md);
+  background: #FDF2F2;
+  border: 1px solid #F8D7DA;
+  border-radius: 6px;
   padding: 0.75rem 1rem;
-  color: #fca5a5;
+  color: #C44536;
   font-size: 0.875rem;
   display: flex;
   align-items: flex-start;
@@ -789,33 +817,56 @@
 
 .auth-btn-submit {
   width: 100%;
-  height: 42px;
-  font-size: 0.9375rem;
-  font-weight: 600;
+  height: 40px;
+  font-size: 0.875rem;
+  font-weight: 500;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   margin-top: 0.5rem;
+  background: #1F6B4F;
+  color: #FFFFFF;
+  border: 1px solid #1F6B4F;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.auth-btn-submit:hover:not(:disabled) {
+  background: #18563F;
+  border-color: #18563F;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.auth-btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-btn-submit .spinner {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #FFFFFF;
 }
 
 .auth-switch-prompt {
   margin-top: 1.5rem;
   text-align: center;
   font-size: 0.875rem;
-  color: var(--text-secondary);
+  color: #66706A;
 }
 
 .auth-link {
-  color: var(--primary);
-  font-weight: 600;
+  color: #1F6B4F;
+  font-weight: 500;
   text-decoration: none;
   transition: color var(--transition-fast);
   margin-left: 0.25rem;
 }
 
 .auth-link:hover {
-  color: #818cf8;
+  color: #18563F;
   text-decoration: underline;
 }
 
@@ -823,7 +874,7 @@
   margin-top: 2rem;
   text-align: center;
   font-size: 0.75rem;
-  color: var(--text-muted);
+  color: #8A918D;
 }
 
 /* ==========================================================================
@@ -1322,5 +1373,391 @@
   background-color: var(--success);
 }
 
+/* ==========================================================================
+   B2B SAAS REFINED THEME — SCOPED TO DASHBOARD
+   ========================================================================== */
 
+.app-layout.theme-dashboard {
+  --bg-app: #F7F7F5;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #F7F7F5;
+  --bg-surface-hover: #F0F2F0;
+  --bg-surface-active: #E8EBE9;
 
+  --primary: #1F6B4F;
+  --primary-hover: #18563F;
+  --primary-active: #134432;
+  --primary-light: #E8F1EC;
+  --primary-glow: rgba(31, 107, 79, 0.12);
+
+  --accent: #1F6B4F;
+  --accent-hover: #18563F;
+  --accent-light: #E8F1EC;
+
+  --border-subtle: #E1E5E2;
+  --border-default: #E1E5E2;
+  --border-strong: #C8CEC9;
+  --border-focus: #1F6B4F;
+
+  --text-primary: #202522;
+  --text-secondary: #66706A;
+  --text-muted: #8A918D;
+  --text-inverse: #FFFFFF;
+
+  --success: #2E7D5B;
+  --success-bg: #E8F5EF;
+  --success-border: #C3E6D5;
+
+  --warning: #B7791F;
+  --warning-bg: #FEF7EC;
+  --warning-border: #F7E2BF;
+
+  --danger: #C44536;
+  --danger-bg: #FDF2F2;
+  --danger-border: #F8D7DA;
+
+  --info: #3B728C;
+  --info-bg: #EDF5F8;
+  --info-border: #CBE1EB;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
+  --shadow-glow: none;
+
+  background-color: #F7F7F5;
+}
+
+/* Sidebar in B2B Dashboard Theme */
+.app-layout.theme-dashboard .app-sidebar {
+  background-color: #FFFFFF;
+  border-right: 1px solid #E1E5E2;
+}
+
+.app-layout.theme-dashboard .sidebar-brand {
+  border-bottom: 1px solid #E1E5E2;
+  color: #202522;
+}
+
+.app-layout.theme-dashboard .sidebar-brand-icon {
+  background: #1F6B4F;
+  color: #FFFFFF;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.app-layout.theme-dashboard .nav-group-title {
+  color: #8A918D;
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+}
+
+.app-layout.theme-dashboard .nav-link {
+  color: #66706A;
+  font-weight: 500;
+  border-radius: 6px;
+}
+
+.app-layout.theme-dashboard .nav-link svg {
+  color: #66706A;
+}
+
+.app-layout.theme-dashboard .nav-link:hover {
+  color: #202522;
+  background-color: #F7F7F5;
+}
+
+.app-layout.theme-dashboard .nav-link:hover svg {
+  color: #202522;
+}
+
+.app-layout.theme-dashboard .nav-link.active {
+  background-color: #E8F1EC;
+  color: #1F6B4F;
+  font-weight: 600;
+}
+
+.app-layout.theme-dashboard .nav-link.active svg {
+  color: #1F6B4F;
+}
+
+.app-layout.theme-dashboard .nav-badge {
+  background: #F0F2F0;
+  color: #66706A;
+}
+
+.app-layout.theme-dashboard .sidebar-footer {
+  border-top: 1px solid #E1E5E2;
+  background: #FFFFFF;
+  color: #66706A;
+}
+
+.app-layout.theme-dashboard .sidebar-footer div {
+  box-shadow: none !important;
+}
+
+.app-layout.theme-dashboard .sidebar-collapse-btn {
+  color: #8A918D !important;
+}
+
+.app-layout.theme-dashboard .sidebar-collapse-btn:hover {
+  color: #202522 !important;
+}
+
+/* Navbar / Topbar in B2B Dashboard Theme */
+.app-layout.theme-dashboard .app-topbar {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E1E5E2;
+}
+
+.app-layout.theme-dashboard .mobile-menu-btn {
+  background: #FFFFFF;
+  border: 1px solid #E1E5E2;
+  color: #202522;
+}
+
+.app-layout.theme-dashboard .mobile-menu-btn:hover {
+  background: #F7F7F5;
+  border-color: #C8CEC9;
+}
+
+.app-layout.theme-dashboard .user-avatar {
+  background: #E8F1EC;
+  color: #1F6B4F;
+  font-weight: 600;
+}
+
+.app-layout.theme-dashboard .user-name {
+  color: #202522;
+}
+
+.app-layout.theme-dashboard .user-email {
+  color: #8A918D;
+}
+
+.app-layout.theme-dashboard .user-profile-button:hover {
+  background-color: #F7F7F5 !important;
+  border-color: #E1E5E2 !important;
+}
+
+.app-layout.theme-dashboard .user-dropdown-menu {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E1E5E2 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+}
+
+.app-layout.theme-dashboard .dropdown-item:hover {
+  background-color: #FDF2F2 !important;
+}
+
+/* App Content Area */
+.app-layout.theme-dashboard .app-content {
+  background-color: #F7F7F5;
+}
+
+/* Page Header in B2B Dashboard Theme */
+.app-layout.theme-dashboard .page-title {
+  color: #202522;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.app-layout.theme-dashboard .page-subtitle {
+  color: #66706A;
+}
+
+.app-layout.theme-dashboard .topbar-breadcrumbs {
+  color: #8A918D;
+}
+
+.app-layout.theme-dashboard .topbar-breadcrumbs .current {
+  color: #202522;
+}
+
+/* Dashboard Metric KPI Cards */
+.app-layout.theme-dashboard .metric-card {
+  background: #FFFFFF;
+  border: 1px solid #E1E5E2;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  padding: 1.25rem;
+}
+
+.app-layout.theme-dashboard .metric-title {
+  color: #66706A;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.app-layout.theme-dashboard .metric-value {
+  color: #202522;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.app-layout.theme-dashboard .metric-subtitle {
+  color: #66706A;
+}
+
+.app-layout.theme-dashboard .metric-icon-box {
+  background: #E8F1EC;
+  color: #1F6B4F;
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+/* General Cards on Dashboard */
+.app-layout.theme-dashboard .card {
+  background: #FFFFFF;
+  border: 1px solid #E1E5E2;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.app-layout.theme-dashboard .card-header {
+  border-bottom: 1px solid #E1E5E2;
+  padding: 1rem 1.25rem;
+}
+
+.app-layout.theme-dashboard .card-title {
+  color: #202522;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.app-layout.theme-dashboard .card-subtitle {
+  color: #66706A;
+  font-size: 0.8125rem;
+}
+
+.app-layout.theme-dashboard .card-body {
+  color: #66706A;
+}
+
+.app-layout.theme-dashboard .empty-state-icon {
+  color: #8A918D;
+}
+
+.app-layout.theme-dashboard .empty-state-title {
+  color: #202522;
+  font-weight: 600;
+}
+
+.app-layout.theme-dashboard .empty-state-desc {
+  color: #66706A;
+}
+
+/* Table in B2B Dashboard Theme */
+.app-layout.theme-dashboard .table-container {
+  background: #FFFFFF;
+  border: 1px solid #E1E5E2;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.app-layout.theme-dashboard .data-table th {
+  background: #F7F7F5;
+  color: #66706A;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid #E1E5E2;
+  padding: 0.75rem 1rem;
+}
+
+.app-layout.theme-dashboard .data-table td {
+  border-bottom: 1px solid #E1E5E2;
+  color: #66706A;
+  padding: 0.75rem 1rem;
+  font-size: 0.8125rem;
+}
+
+.app-layout.theme-dashboard .data-table tbody tr:hover {
+  background-color: #F7F7F5;
+}
+
+.app-layout.theme-dashboard .data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Badges in B2B Dashboard Theme */
+.app-layout.theme-dashboard .badge-success {
+  background: #E8F5EF;
+  color: #2E7D5B;
+  border: 1px solid #C3E6D5;
+}
+
+.app-layout.theme-dashboard .badge-warning,
+.app-layout.theme-dashboard .badge-running {
+  background: #FEF7EC;
+  color: #B7791F;
+  border: 1px solid #F7E2BF;
+}
+
+.app-layout.theme-dashboard .badge-danger {
+  background: #FDF2F2;
+  color: #C44536;
+  border: 1px solid #F8D7DA;
+}
+
+.app-layout.theme-dashboard .badge-info {
+  background: #EDF5F8;
+  color: #3B728C;
+  border: 1px solid #CBE1EB;
+}
+
+.app-layout.theme-dashboard .badge-muted {
+  background: #F0F2F0;
+  color: #66706A;
+  border: 1px solid #E1E5E2;
+}
+
+/* Buttons in B2B Dashboard Theme */
+.app-layout.theme-dashboard .btn-primary {
+  background: #1F6B4F;
+  color: #FFFFFF;
+  border: 1px solid #1F6B4F;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.app-layout.theme-dashboard .btn-primary:hover:not(:disabled) {
+  background: #18563F;
+  border-color: #18563F;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.app-layout.theme-dashboard .btn-secondary {
+  background: #FFFFFF;
+  color: #202522;
+  border: 1px solid #E1E5E2;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.app-layout.theme-dashboard .btn-secondary:hover:not(:disabled) {
+  background: #F7F7F5;
+  border-color: #C8CEC9;
+  color: #202522;
+}
+
+.app-layout.theme-dashboard .spinner {
+  border-color: rgba(0, 0, 0, 0.12);
+  border-top-color: currentColor;
+}
+
+.app-layout.theme-dashboard .auth-alert-error {
+  background: #FDF2F2;
+  border: 1px solid #F8D7DA;
+  color: #C44536;
+}
+
+.app-layout.theme-dashboard .skip-link {
+  background: #1F6B4F;
+  color: #FFFFFF;
+}
+
+.app-layout.theme-dashboard :focus-visible {
+  outline: 2px solid #1F6B4F;
+  outline-offset: 2px;
+}

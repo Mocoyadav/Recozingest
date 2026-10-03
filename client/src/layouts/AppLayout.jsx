@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Sidebar from '../components/layout/Sidebar.jsx';
 import Navbar from '../components/layout/Navbar.jsx';
 
@@ -10,9 +10,11 @@ import Navbar from '../components/layout/Navbar.jsx';
 export function AppLayout() {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+  const location = useLocation();
+  const isDashboard = location.pathname === '/dashboard' || location.pathname === '/dashboard/';
 
   return (
-    <div className="app-layout">
+    <div className={`app-layout ${isDashboard ? 'theme-dashboard' : ''}`}>
       {/* Skip to Main Content Link for Keyboard Accessibility */}
       <a href="#main-content" className="skip-link">
         Skip to main content
