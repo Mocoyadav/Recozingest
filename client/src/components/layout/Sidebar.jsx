@@ -73,8 +73,8 @@ export function Sidebar({
           style={{
             position: 'fixed',
             inset: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.6)',
-            backdropFilter: 'blur(4px)',
+            backgroundColor: 'rgba(0, 0, 0, 0.45)',
+            backdropFilter: 'blur(2px)',
             zIndex: 90
           }}
         />
@@ -185,8 +185,7 @@ export function Sidebar({
                   width: '8px',
                   height: '8px',
                   borderRadius: 'var(--radius-full)',
-                  backgroundColor: 'var(--success)',
-                  boxShadow: '0 0 8px var(--success)'
+                  backgroundColor: 'var(--success)'
                 }}
               />
               <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>

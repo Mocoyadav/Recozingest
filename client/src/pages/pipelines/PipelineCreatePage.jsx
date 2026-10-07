@@ -658,8 +658,8 @@ export function PipelineCreatePage() {
                 style={{
                   padding: '1rem 1.25rem',
                   borderRadius: 'var(--radius-md)',
-                  backgroundColor: 'rgba(99, 102, 241, 0.08)',
-                  border: '1px solid rgba(99, 102, 241, 0.2)'
+                  backgroundColor: 'var(--primary-light)',
+                  border: '1px solid var(--border-subtle)'
                 }}
               >
                 <span style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--primary)' }}>

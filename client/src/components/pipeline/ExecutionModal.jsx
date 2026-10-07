@@ -562,8 +562,8 @@ export function ExecutionModal({
             <div
               className="auth-alert-error"
               style={{
-                backgroundColor: 'rgba(245, 158, 11, 0.1)',
-                borderColor: 'var(--warning)',
+                backgroundColor: 'var(--warning-bg)',
+                borderColor: 'var(--warning-border)',
                 color: 'var(--text-primary)',
                 padding: '0.875rem 1rem'
               }}

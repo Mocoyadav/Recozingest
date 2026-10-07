@@ -127,10 +127,10 @@ export function Navbar({ onToggleMobileSidebar }) {
               top: 'calc(100% + 8px)',
               right: 0,
               width: '260px',
-              backgroundColor: 'var(--bg-surface-elevated)',
+              backgroundColor: '#FFFFFF',
               border: '1px solid var(--border-default)',
               borderRadius: 'var(--radius-lg)',
-              boxShadow: 'var(--shadow-lg)',
+              boxShadow: '0 4px 14px rgba(0, 0, 0, 0.08)',
               padding: '0.75rem 0',
               zIndex: 100,
               animation: 'toastSlide 150ms ease-out'

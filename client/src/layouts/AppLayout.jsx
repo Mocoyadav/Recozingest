@@ -14,7 +14,7 @@ export function AppLayout() {
   const isDashboard = location.pathname === '/dashboard' || location.pathname === '/dashboard/';
 
   return (
-    <div className={`app-layout ${isDashboard ? 'theme-dashboard' : ''}`}>
+    <div className="app-layout theme-dashboard">
       {/* Skip to Main Content Link for Keyboard Accessibility */}
       <a href="#main-content" className="skip-link">
         Skip to main content

@@ -58,7 +58,7 @@ export class ErrorBoundary extends Component {
             alignItems: 'center',
             justifyContent: 'center',
             padding: '2rem',
-            backgroundColor: 'var(--bg-canvas)'
+            backgroundColor: 'var(--bg-app)'
           }}
         >
           <div
@@ -68,8 +68,8 @@ export class ErrorBoundary extends Component {
               width: '100%',
               padding: '2rem',
               textAlign: 'center',
-              boxShadow: 'var(--shadow-xl)',
-              borderColor: 'rgba(239, 68, 68, 0.2)'
+              boxShadow: 'var(--shadow-lg)',
+              borderColor: 'var(--danger-border)'
             }}
           >
             <div

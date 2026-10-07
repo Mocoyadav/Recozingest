@@ -1080,8 +1080,8 @@ export function PipelineDetailPage() {
               {scheduleEnabled && scheduleData?.nextRunAt && (
                 <div
                   style={{
-                    backgroundColor: 'rgba(99, 102, 241, 0.08)',
-                    border: '1px solid rgba(99, 102, 241, 0.25)',
+                    backgroundColor: 'var(--primary-light)',
+                    border: '1px solid var(--border-subtle)',
                     borderRadius: 'var(--radius-md)',
                     padding: '0.75rem 1rem',
                     marginBottom: '1.5rem',
@@ -1549,16 +1549,16 @@ export function PipelineDetailPage() {
                   borderRadius: 'var(--radius-md)',
                   backgroundColor:
                     selectedRun.status === 'SUCCESS'
-                      ? 'rgba(16, 185, 129, 0.1)'
+                      ? 'var(--success-bg)'
                       : selectedRun.status === 'FAILED'
-                      ? 'rgba(239, 68, 68, 0.1)'
-                      : 'rgba(245, 158, 11, 0.1)',
+                      ? 'var(--danger-bg)'
+                      : 'var(--warning-bg)',
                   border: `1px solid ${
                     selectedRun.status === 'SUCCESS'
-                      ? 'var(--success)'
+                      ? 'var(--success-border)'
                       : selectedRun.status === 'FAILED'
-                      ? 'var(--danger)'
-                      : 'var(--warning)'
+                      ? 'var(--danger-border)'
+                      : 'var(--warning-border)'
                   }`
                 }}
               >

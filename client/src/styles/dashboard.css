@@ -45,9 +45,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  border-radius: var(--radius-sm);
+  background: #1F6B4F;
+  border-radius: 6px;
   color: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 .sidebar-nav {
@@ -64,7 +65,7 @@
   font-weight: 700;
   text-transform: uppercase;
   color: var(--text-muted);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
   padding: 0.5rem 0.75rem 0.25rem;
 }
 
@@ -73,45 +74,54 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.625rem 0.75rem;
-  color: var(--text-secondary);
-  border-radius: var(--radius-md);
+  color: #66706A;
+  border-radius: 6px;
   font-size: 0.875rem;
   font-weight: 500;
   transition: all var(--transition-fast);
 }
 
+.nav-link svg {
+  color: #66706A;
+}
+
 .nav-link:hover {
   color: var(--text-primary);
-  background-color: var(--bg-surface-elevated);
+  background-color: var(--bg-app);
+}
+
+.nav-link:hover svg {
+  color: var(--text-primary);
 }
 
 .nav-link.active {
-  color: #ffffff;
-  background-color: var(--primary);
+  color: #1F6B4F;
+  background-color: #E8F1EC;
   font-weight: 600;
 }
 
 .nav-link.active svg {
-  color: #ffffff;
+  color: #1F6B4F;
 }
 
 .nav-badge {
   margin-left: auto;
   font-size: 0.6875rem;
-  background: var(--bg-surface-elevated);
+  background: #F0F2F0;
   padding: 0.125rem 0.375rem;
   border-radius: var(--radius-sm);
-  color: var(--text-muted);
+  color: #66706A;
 }
 
 /* Sidebar Footer (User / Version) */
 .sidebar-footer {
   padding: 1rem;
   border-top: 1px solid var(--border-subtle);
-  background: rgba(11, 15, 25, 0.5);
+  background: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: #66706A;
 }
 
 /* Main Content Area */
@@ -163,8 +173,8 @@
 .user-avatar {
   width: 32px;
   height: 32px;
-  background: linear-gradient(135deg, #4f46e5, #06b6d4);
-  color: #ffffff;
+  background: var(--primary-light);
+  color: var(--primary);
   border-radius: var(--radius-full);
   display: flex;
   align-items: center;
@@ -303,21 +313,22 @@
 }
 
 .data-table th {
-  background: rgba(17, 24, 39, 0.6);
-  color: var(--text-muted);
+  background: var(--bg-app);
+  color: var(--text-secondary);
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 0.875rem 1.25rem;
+  letter-spacing: 0.04em;
+  padding: 0.75rem 1rem;
   border-bottom: 1px solid var(--border-subtle);
 }
 
 .data-table td {
-  padding: 0.875rem 1.25rem;
+  padding: 0.75rem 1rem;
   border-bottom: 1px solid var(--border-subtle);
   color: var(--text-secondary);
   vertical-align: middle;
+  font-size: 0.8125rem;
 }
 
 .data-table tbody tr {
@@ -325,7 +336,7 @@
 }
 
 .data-table tbody tr:hover {
-  background-color: var(--bg-surface-elevated);
+  background-color: var(--bg-app);
 }
 
 .data-table tbody tr:last-child td {
@@ -928,7 +939,7 @@
   border-color: var(--primary);
   background-color: var(--primary);
   color: #ffffff;
-  box-shadow: 0 0 12px var(--primary-glow);
+  box-shadow: none;
 }
 
 .wizard-step-circle.completed {
@@ -949,7 +960,7 @@
 }
 
 .wizard-step-indicator.active .wizard-step-title {
-  color: var(--text-primary);
+  color: var(--primary);
 }
 
 .wizard-step-indicator.completed .wizard-step-title {
@@ -992,7 +1003,7 @@
 }
 
 .selection-card {
-  background-color: var(--bg-surface-elevated);
+  background-color: #FFFFFF;
   border: 1px solid var(--border-default);
   border-radius: var(--radius-lg);
   padding: 1.125rem;
@@ -1003,17 +1014,18 @@
   transition: all var(--transition-fast);
   text-align: left;
   position: relative;
+  box-shadow: var(--shadow-sm);
 }
 
 .selection-card:hover {
   border-color: var(--border-strong);
-  background-color: var(--bg-surface-hover);
+  background-color: var(--bg-app);
 }
 
 .selection-card.selected {
   border-color: var(--primary);
   background-color: var(--primary-light);
-  box-shadow: 0 0 14px -2px var(--primary-glow);
+  box-shadow: none;
 }
 
 @media (max-width: 640px) {
@@ -1067,26 +1079,26 @@
 
 .detail-tab-btn:hover {
   color: var(--text-primary);
-  background-color: var(--bg-surface-elevated);
+  background-color: var(--bg-app);
 }
 
 .detail-tab-btn.active {
   color: var(--primary);
   border-bottom-color: var(--primary);
   font-weight: 600;
-  background-color: rgba(99, 102, 241, 0.06);
+  background-color: var(--primary-light);
 }
 
 .detail-tab-btn .tab-badge {
   font-size: 0.6875rem;
   padding: 0.125rem 0.375rem;
   border-radius: var(--radius-full);
-  background-color: var(--bg-surface-elevated);
+  background-color: #F0F2F0;
   color: var(--text-muted);
 }
 
 .detail-tab-btn.active .tab-badge {
-  background-color: var(--primary-light);
+  background-color: #FFFFFF;
   color: var(--primary);
 }
 
@@ -1105,6 +1117,7 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  box-shadow: var(--shadow-sm);
 }
 
 .info-card-header {
@@ -1156,8 +1169,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 1.25rem;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(6, 182, 212, 0.08));
-  border: 1px solid rgba(99, 102, 241, 0.25);
+  background: #FFFFFF;
+  border: 1px solid var(--border-default);
   border-radius: var(--radius-lg);
   margin-bottom: 1.5rem;
   flex-wrap: wrap;
@@ -1200,8 +1213,8 @@
   padding: 0.625rem 0.75rem;
   text-align: left;
   font-weight: 600;
-  color: var(--text-muted);
-  background-color: var(--bg-surface-elevated);
+  color: var(--text-secondary);
+  background-color: var(--bg-app);
   border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -1209,17 +1222,18 @@
   padding: 0.625rem 0.75rem;
   border-bottom: 1px solid var(--border-subtle);
   vertical-align: middle;
+  color: var(--text-secondary);
 }
 
 .mapping-table tr:hover td {
-  background-color: rgba(255, 255, 255, 0.015);
+  background-color: var(--bg-app);
 }
 
 /* Drawer Component */
 .drawer-backdrop {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.65);
+  background-color: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(2px);
   z-index: 100;
   display: flex;
@@ -1231,9 +1245,9 @@
   width: 100%;
   max-width: 520px;
   height: 100vh;
-  background-color: var(--bg-surface);
+  background-color: #FFFFFF;
   border-left: 1px solid var(--border-default);
-  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.5);
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
   animation: slideInRight 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1312,7 +1326,7 @@
 }
 
 .execution-step-icon.pending {
-  background-color: var(--bg-surface-elevated);
+  background-color: var(--bg-app);
   border: 2px solid var(--border-default);
   color: var(--text-muted);
 }
@@ -1374,9 +1388,10 @@
 }
 
 /* ==========================================================================
-   B2B SAAS REFINED THEME — SCOPED TO DASHBOARD
+   B2B SAAS REFINED THEME — AUTHENTICATED APPLICATION
    ========================================================================== */
 
+.app-layout,
 .app-layout.theme-dashboard {
   --bg-app: #F7F7F5;
   --bg-surface: #FFFFFF;
@@ -1429,153 +1444,153 @@
 }
 
 /* Sidebar in B2B Dashboard Theme */
-.app-layout.theme-dashboard .app-sidebar {
+.app-layout .app-sidebar {
   background-color: #FFFFFF;
   border-right: 1px solid #E1E5E2;
 }
 
-.app-layout.theme-dashboard .sidebar-brand {
+.app-layout .sidebar-brand {
   border-bottom: 1px solid #E1E5E2;
   color: #202522;
 }
 
-.app-layout.theme-dashboard .sidebar-brand-icon {
+.app-layout .sidebar-brand-icon {
   background: #1F6B4F;
   color: #FFFFFF;
   border-radius: 6px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
-.app-layout.theme-dashboard .nav-group-title {
+.app-layout .nav-group-title {
   color: #8A918D;
   font-size: 0.6875rem;
   letter-spacing: 0.05em;
 }
 
-.app-layout.theme-dashboard .nav-link {
+.app-layout .nav-link {
   color: #66706A;
   font-weight: 500;
   border-radius: 6px;
 }
 
-.app-layout.theme-dashboard .nav-link svg {
+.app-layout .nav-link svg {
   color: #66706A;
 }
 
-.app-layout.theme-dashboard .nav-link:hover {
+.app-layout .nav-link:hover {
   color: #202522;
   background-color: #F7F7F5;
 }
 
-.app-layout.theme-dashboard .nav-link:hover svg {
+.app-layout .nav-link:hover svg {
   color: #202522;
 }
 
-.app-layout.theme-dashboard .nav-link.active {
+.app-layout .nav-link.active {
   background-color: #E8F1EC;
   color: #1F6B4F;
   font-weight: 600;
 }
 
-.app-layout.theme-dashboard .nav-link.active svg {
+.app-layout .nav-link.active svg {
   color: #1F6B4F;
 }
 
-.app-layout.theme-dashboard .nav-badge {
+.app-layout .nav-badge {
   background: #F0F2F0;
   color: #66706A;
 }
 
-.app-layout.theme-dashboard .sidebar-footer {
+.app-layout .sidebar-footer {
   border-top: 1px solid #E1E5E2;
   background: #FFFFFF;
   color: #66706A;
 }
 
-.app-layout.theme-dashboard .sidebar-footer div {
+.app-layout .sidebar-footer div {
   box-shadow: none !important;
 }
 
-.app-layout.theme-dashboard .sidebar-collapse-btn {
+.app-layout .sidebar-collapse-btn {
   color: #8A918D !important;
 }
 
-.app-layout.theme-dashboard .sidebar-collapse-btn:hover {
+.app-layout .sidebar-collapse-btn:hover {
   color: #202522 !important;
 }
 
 /* Navbar / Topbar in B2B Dashboard Theme */
-.app-layout.theme-dashboard .app-topbar {
+.app-layout .app-topbar {
   background-color: #FFFFFF;
   border-bottom: 1px solid #E1E5E2;
 }
 
-.app-layout.theme-dashboard .mobile-menu-btn {
+.app-layout .mobile-menu-btn {
   background: #FFFFFF;
   border: 1px solid #E1E5E2;
   color: #202522;
 }
 
-.app-layout.theme-dashboard .mobile-menu-btn:hover {
+.app-layout .mobile-menu-btn:hover {
   background: #F7F7F5;
   border-color: #C8CEC9;
 }
 
-.app-layout.theme-dashboard .user-avatar {
+.app-layout .user-avatar {
   background: #E8F1EC;
   color: #1F6B4F;
   font-weight: 600;
 }
 
-.app-layout.theme-dashboard .user-name {
+.app-layout .user-name {
   color: #202522;
 }
 
-.app-layout.theme-dashboard .user-email {
+.app-layout .user-email {
   color: #8A918D;
 }
 
-.app-layout.theme-dashboard .user-profile-button:hover {
+.app-layout .user-profile-button:hover {
   background-color: #F7F7F5 !important;
   border-color: #E1E5E2 !important;
 }
 
-.app-layout.theme-dashboard .user-dropdown-menu {
+.app-layout .user-dropdown-menu {
   background-color: #FFFFFF !important;
   border: 1px solid #E1E5E2 !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
 }
 
-.app-layout.theme-dashboard .dropdown-item:hover {
+.app-layout .dropdown-item:hover {
   background-color: #FDF2F2 !important;
 }
 
 /* App Content Area */
-.app-layout.theme-dashboard .app-content {
+.app-layout .app-content {
   background-color: #F7F7F5;
 }
 
 /* Page Header in B2B Dashboard Theme */
-.app-layout.theme-dashboard .page-title {
+.app-layout .page-title {
   color: #202522;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
 
-.app-layout.theme-dashboard .page-subtitle {
+.app-layout .page-subtitle {
   color: #66706A;
 }
 
-.app-layout.theme-dashboard .topbar-breadcrumbs {
+.app-layout .topbar-breadcrumbs {
   color: #8A918D;
 }
 
-.app-layout.theme-dashboard .topbar-breadcrumbs .current {
+.app-layout .topbar-breadcrumbs .current {
   color: #202522;
 }
 
 /* Dashboard Metric KPI Cards */
-.app-layout.theme-dashboard .metric-card {
+.app-layout .metric-card {
   background: #FFFFFF;
   border: 1px solid #E1E5E2;
   border-radius: 8px;
@@ -1583,25 +1598,25 @@
   padding: 1.25rem;
 }
 
-.app-layout.theme-dashboard .metric-title {
+.app-layout .metric-title {
   color: #66706A;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.04em;
 }
 
-.app-layout.theme-dashboard .metric-value {
+.app-layout .metric-value {
   color: #202522;
   font-size: 1.75rem;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
-.app-layout.theme-dashboard .metric-subtitle {
+.app-layout .metric-subtitle {
   color: #66706A;
 }
 
-.app-layout.theme-dashboard .metric-icon-box {
+.app-layout .metric-icon-box {
   background: #E8F1EC;
   color: #1F6B4F;
   border-radius: 6px;
@@ -1609,55 +1624,55 @@
 }
 
 /* General Cards on Dashboard */
-.app-layout.theme-dashboard .card {
+.app-layout .card {
   background: #FFFFFF;
   border: 1px solid #E1E5E2;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
-.app-layout.theme-dashboard .card-header {
+.app-layout .card-header {
   border-bottom: 1px solid #E1E5E2;
   padding: 1rem 1.25rem;
 }
 
-.app-layout.theme-dashboard .card-title {
+.app-layout .card-title {
   color: #202522;
   font-size: 0.9375rem;
   font-weight: 600;
 }
 
-.app-layout.theme-dashboard .card-subtitle {
+.app-layout .card-subtitle {
   color: #66706A;
   font-size: 0.8125rem;
 }
 
-.app-layout.theme-dashboard .card-body {
+.app-layout .card-body {
   color: #66706A;
 }
 
-.app-layout.theme-dashboard .empty-state-icon {
+.app-layout .empty-state-icon {
   color: #8A918D;
 }
 
-.app-layout.theme-dashboard .empty-state-title {
+.app-layout .empty-state-title {
   color: #202522;
   font-weight: 600;
 }
 
-.app-layout.theme-dashboard .empty-state-desc {
+.app-layout .empty-state-desc {
   color: #66706A;
 }
 
 /* Table in B2B Dashboard Theme */
-.app-layout.theme-dashboard .table-container {
+.app-layout .table-container {
   background: #FFFFFF;
   border: 1px solid #E1E5E2;
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
-.app-layout.theme-dashboard .data-table th {
+.app-layout .data-table th {
   background: #F7F7F5;
   color: #66706A;
   font-size: 0.75rem;
@@ -1667,97 +1682,97 @@
   padding: 0.75rem 1rem;
 }
 
-.app-layout.theme-dashboard .data-table td {
+.app-layout .data-table td {
   border-bottom: 1px solid #E1E5E2;
   color: #66706A;
   padding: 0.75rem 1rem;
   font-size: 0.8125rem;
 }
 
-.app-layout.theme-dashboard .data-table tbody tr:hover {
+.app-layout .data-table tbody tr:hover {
   background-color: #F7F7F5;
 }
 
-.app-layout.theme-dashboard .data-table tbody tr:last-child td {
+.app-layout .data-table tbody tr:last-child td {
   border-bottom: none;
 }
 
 /* Badges in B2B Dashboard Theme */
-.app-layout.theme-dashboard .badge-success {
+.app-layout .badge-success {
   background: #E8F5EF;
   color: #2E7D5B;
   border: 1px solid #C3E6D5;
 }
 
-.app-layout.theme-dashboard .badge-warning,
-.app-layout.theme-dashboard .badge-running {
+.app-layout .badge-warning,
+.app-layout .badge-running {
   background: #FEF7EC;
   color: #B7791F;
   border: 1px solid #F7E2BF;
 }
 
-.app-layout.theme-dashboard .badge-danger {
+.app-layout .badge-danger {
   background: #FDF2F2;
   color: #C44536;
   border: 1px solid #F8D7DA;
 }
 
-.app-layout.theme-dashboard .badge-info {
+.app-layout .badge-info {
   background: #EDF5F8;
   color: #3B728C;
   border: 1px solid #CBE1EB;
 }
 
-.app-layout.theme-dashboard .badge-muted {
+.app-layout .badge-muted {
   background: #F0F2F0;
   color: #66706A;
   border: 1px solid #E1E5E2;
 }
 
 /* Buttons in B2B Dashboard Theme */
-.app-layout.theme-dashboard .btn-primary {
+.app-layout .btn-primary {
   background: #1F6B4F;
   color: #FFFFFF;
   border: 1px solid #1F6B4F;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-.app-layout.theme-dashboard .btn-primary:hover:not(:disabled) {
+.app-layout .btn-primary:hover:not(:disabled) {
   background: #18563F;
   border-color: #18563F;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
-.app-layout.theme-dashboard .btn-secondary {
+.app-layout .btn-secondary {
   background: #FFFFFF;
   color: #202522;
   border: 1px solid #E1E5E2;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
-.app-layout.theme-dashboard .btn-secondary:hover:not(:disabled) {
+.app-layout .btn-secondary:hover:not(:disabled) {
   background: #F7F7F5;
   border-color: #C8CEC9;
   color: #202522;
 }
 
-.app-layout.theme-dashboard .spinner {
+.app-layout .spinner {
   border-color: rgba(0, 0, 0, 0.12);
   border-top-color: currentColor;
 }
 
-.app-layout.theme-dashboard .auth-alert-error {
+.app-layout .auth-alert-error {
   background: #FDF2F2;
   border: 1px solid #F8D7DA;
   color: #C44536;
 }
 
-.app-layout.theme-dashboard .skip-link {
+.app-layout .skip-link {
   background: #1F6B4F;
   color: #FFFFFF;
 }
 
-.app-layout.theme-dashboard :focus-visible {
+.app-layout :focus-visible {
   outline: 2px solid #1F6B4F;
   outline-offset: 2px;
 }
