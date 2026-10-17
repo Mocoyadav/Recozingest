@@ -76,6 +76,7 @@ export function ExecutionModal({
   const pollingIntervalRef = useRef(null);
   const isExecutingRef = useRef(false);
   const isPollingActiveRef = useRef(false);
+  const hasTriggeredRef = useRef(false);
 
   // Clear timers safely
   const clearTimers = useCallback(() => {
@@ -254,22 +255,57 @@ export function ExecutionModal({
     }
   }, [pipeline?.id, stopElapsedTimer, startConcurrencyPolling, onComplete]);
 
-  // Trigger execution when modal opens in IDLE state
+  // Trigger execution once per modal open session, or enter monitoring mode if already running
   useEffect(() => {
-    if (isOpen && status === 'IDLE' && pipeline) {
-      if (pipeline.status !== 'ACTIVE') {
-        setStatus('FAILED');
-        setErrorMessage('Pipeline is not active. Activate the pipeline to run it.');
-        setStageStates({
-          extracted: 'failed',
-          transformed: 'failed',
-          loaded: 'failed'
-        });
-      } else {
-        triggerExecution();
-      }
+    if (!isOpen) {
+      clearTimers();
+      stopElapsedTimer();
+      hasTriggeredRef.current = false;
+      isExecutingRef.current = false;
+      setStatus('IDLE');
+      setRunResult(null);
+      setErrorMessage(null);
+      setStageStates({
+        extracted: 'pending',
+        transformed: 'pending',
+        loaded: 'pending'
+      });
+      return;
     }
-  }, [isOpen, status, pipeline, triggerExecution]);
+
+    // Modal is open - ensure execution is only triggered once per open session
+    if (hasTriggeredRef.current) {
+      return;
+    }
+
+    if (!pipeline?.id) return;
+    hasTriggeredRef.current = true;
+
+    // If pipeline is already executing in background (or via schedule),
+    // enter monitoring mode directly via status polling. Polling must NEVER call POST /run!
+    if (pipeline.isRunning) {
+      setStatus('CONCURRENT_LOCKED');
+      setErrorMessage(
+        'Pipeline is currently executing: Another manual or scheduled execution is already running.'
+      );
+      startConcurrencyPolling();
+      return;
+    }
+
+    if (pipeline.status !== 'ACTIVE') {
+      setStatus('FAILED');
+      setErrorMessage('Pipeline is not active. Activate the pipeline to run it.');
+      setStageStates({
+        extracted: 'failed',
+        transformed: 'failed',
+        loaded: 'failed'
+      });
+      return;
+    }
+
+    // Pipeline is ACTIVE and not currently running: trigger execution exactly once
+    triggerExecution();
+  }, [isOpen, pipeline?.id, pipeline?.status, pipeline?.isRunning, clearTimers, stopElapsedTimer, startConcurrencyPolling, triggerExecution]);
 
   // Clean up all intervals on unmount
   useEffect(() => {

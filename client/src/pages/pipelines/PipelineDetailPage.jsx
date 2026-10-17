@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import {
   Workflow,
@@ -116,15 +116,28 @@ export function PipelineDetailPage() {
   const [previewResult, setPreviewResult] = useState(null);
   const [isPreviewing, setIsPreviewing] = useState(false);
 
+  const hasLoadedInitialRef = useRef(false);
+
   // 1. Fetch Pipeline Core Details
-  const fetchPipelineDetails = useCallback(async (isManual = false) => {
-    if (isManual) setIsRefreshing(true);
-    else setLoading(true);
+  const fetchPipelineDetails = useCallback(async (options = false) => {
+    const isManual = options === true || (typeof options === 'object' && options?.manual);
+    const isSilent = typeof options === 'object' && options?.silent;
+
+    if (isManual) {
+      setIsRefreshing(true);
+    } else if (isSilent) {
+      // Silent update without full loading screen or refreshing badge
+    } else if (!hasLoadedInitialRef.current) {
+      setLoading(true);
+    } else {
+      setIsRefreshing(true);
+    }
     setError(null);
 
     try {
       const data = await pipelineService.getPipelineById(id);
       const pipe = data.pipeline;
+      hasLoadedInitialRef.current = true;
       setPipeline(pipe);
 
       // Populate edit form
@@ -213,7 +226,12 @@ export function PipelineDetailPage() {
 
   // 3. Manual Run Execution via Interactive ExecutionModal
   const handleOpenExecutionModal = () => {
-    if (isExecutionModalOpen || pipeline?.isRunning) {
+    if (isExecutionModalOpen || isRunningPipeline) {
+      return;
+    }
+
+    if (pipeline?.isRunning) {
+      // Pipeline is already executing in background; open modal to monitor status without triggering a duplicate run
       setIsExecutionModalOpen(true);
       return;
     }
@@ -223,10 +241,12 @@ export function PipelineDetailPage() {
       return;
     }
 
+    setIsRunningPipeline(true);
     setIsExecutionModalOpen(true);
   };
 
-  const handleExecutionModalComplete = async (result) => {
+  const handleExecutionModalComplete = useCallback(async (result) => {
+    setIsRunningPipeline(false);
     if (result?.success) {
       toast.success('Pipeline execution completed successfully!');
       if (result.run) {
@@ -243,12 +263,12 @@ export function PipelineDetailPage() {
       });
     }
 
-    // Automatically refresh core pipeline details and run history
-    await fetchPipelineDetails();
+    // Automatically refresh core pipeline details silently without unmounting the modal/page
+    await fetchPipelineDetails({ silent: true });
     if (activeTab === 'runs') {
       await fetchRunHistory(1);
     }
-  };
+  }, [activeTab, fetchPipelineDetails, fetchRunHistory, toast]);
 
   // 4. Quick Edit Pipeline Modal Submit
   const handleSaveEdit = async (e) => {
@@ -561,7 +581,7 @@ export function PipelineDetailPage() {
               className="btn btn-primary"
               id="btn-run-pipeline"
               onClick={handleOpenExecutionModal}
-              disabled={isExecutionModalOpen || pipeline?.isRunning}
+              disabled={isExecutionModalOpen || pipeline?.isRunning || isRunningPipeline || loading}
               title={pipeline?.status !== 'ACTIVE' ? 'Activate pipeline to run' : 'Run pipeline now'}
               style={{
                 display: 'flex',
@@ -572,7 +592,7 @@ export function PipelineDetailPage() {
                 justifyContent: 'center'
               }}
             >
-              {pipeline?.isRunning || isExecutionModalOpen ? (
+              {pipeline?.isRunning || isRunningPipeline || isExecutionModalOpen ? (
                 <>
                   <span className="spinner"></span>
                   <span>Executing...</span>
@@ -1810,7 +1830,8 @@ export function PipelineDetailPage() {
         isOpen={isExecutionModalOpen}
         onClose={() => {
           setIsExecutionModalOpen(false);
-          fetchPipelineDetails();
+          setIsRunningPipeline(false);
+          fetchPipelineDetails({ silent: true });
           if (activeTab === 'runs') {
             fetchRunHistory(1);
           }

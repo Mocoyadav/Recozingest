@@ -587,11 +587,11 @@ export function PipelinesListPage() {
           isOpen={Boolean(executingPipeline)}
           onClose={() => {
             setExecutingPipeline(null);
-            fetchPipelines();
+            fetchPipelines(true);
           }}
           pipeline={executingPipeline}
           onComplete={() => {
-            fetchPipelines();
+            fetchPipelines(true);
           }}
         />
       )}
