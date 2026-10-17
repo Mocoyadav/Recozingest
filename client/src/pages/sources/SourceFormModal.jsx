@@ -233,9 +233,9 @@ export function SourceFormModal({ isOpen, onClose, onSaved, source = null }) {
       aria-modal="true"
       aria-labelledby="source-modal-title"
     >
-      <div className="modal-container" style={{ maxWidth: '640px' }}>
+      <div className="modal-container" style={{ maxWidth: '640px', maxHeight: '90dvh', display: 'flex', flexDirection: 'column' }}>
         {/* Modal Header */}
-        <div className="modal-header">
+        <div className="modal-header" style={{ flexShrink: 0 }}>
           <div>
             <h3 id="source-modal-title" className="card-title" style={{ fontSize: '1.125rem' }}>
               {isEditing ? 'Edit Source Connector' : 'Configure New Source'}
@@ -266,8 +266,23 @@ export function SourceFormModal({ isOpen, onClose, onSaved, source = null }) {
         </div>
 
         {/* Modal Body / Form */}
-        <form onSubmit={handleSubmit} noValidate>
-          <div className="modal-body" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+        <form
+          onSubmit={handleSubmit}
+          noValidate
+          className="modal-form"
+          style={{ display: 'flex', flexDirection: 'column', flex: 1, minHeight: 0, overflow: 'hidden' }}
+        >
+          <div
+            className="modal-body"
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1.25rem',
+              overflowY: 'auto',
+              minHeight: 0,
+              flex: 1
+            }}
+          >
             {serverError && (
               <div className="auth-alert-error" role="alert">
                 <AlertCircle size={16} style={{ flexShrink: 0, marginTop: '2px' }} />
@@ -588,7 +603,10 @@ export function SourceFormModal({ isOpen, onClose, onSaved, source = null }) {
           </div>
 
           {/* Modal Footer */}
-          <div className="modal-footer">
+          <div
+            className="modal-footer"
+            style={{ flexShrink: 0, position: 'sticky', bottom: 0, zIndex: 10 }}
+          >
             <button
               type="button"
               className="btn btn-secondary"
